@@ -31,24 +31,40 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Filiere
+/*
 Route::get('/filieres',[App\Http\Controllers\FiliereController::class, 'index']);
 Route::post('/filieres/save',[App\Http\Controllers\FiliereController::class, 'store']);
 Route::put('/filieres/update/{id}',[App\Http\Controllers\FiliereController::class, 'update']);
-Route::delete('/filieres/delete/{id}',[App\Http\Controllers\FiliereController::class, 'destroy']);
+Route::delete('/filieres/delete/{id}',[App\Http\Controllers\FiliereController::class, 'destroy']);*/
+Route::apiResource('filieres',FiliereController::class);
+Route::apiResource('etudiants',EtudiantController::class);
+Route::apiResource('departements',DepartementController::class);
+Route::apiResource('examens',ExamenController::class);
+Route::apiResource('matieres',MatiereController::class);
+Route::apiResource('professeurs',ProfesseurController::class);
+Route::apiResource('propositions',PropositionController::class);
+Route::apiResource('questions',QuestionController::class);
+Route::apiResource('reponses',ReponseController::class);
+Route::apiResource('notes',NoteController::class);
+
 
 // Departement
+/*
 Route::get('/departements',[App\Http\Controllers\DepartementController::class, 'index']);
 Route::post('/departements/save',[App\Http\Controllers\DepartementController::class, 'store']);
 Route::put('/departements/update/{id}',[App\Http\Controllers\DepartementController::class, 'update']);
-Route::delete('/departements/delete/{id}',[App\Http\Controllers\DepartementController::class, 'destroy']);
+Route::delete('/departements/delete/{id}',[App\Http\Controllers\DepartementController::class, 'destroy']);*/
+
 
 // Etudiant
+/*
 Route::get('/etudiants',[App\Http\Controllers\EtudiantController::class, 'index']);
 Route::post('/etudiants/save',[App\Http\Controllers\EtudiantController::class, 'store']);
 Route::put('/etudiants/update/{id}',[App\Http\Controllers\EtudiantController::class, 'update']);
-Route::delete('/etudiants/delete/{id}',[App\Http\Controllers\EtudiantController::class, 'destroy']);
+Route::delete('/etudiants/delete/{id}',[App\Http\Controllers\EtudiantController::class, 'destroy']);*/
 
 // Examen
+/*
 Route::get('/examens',[App\Http\Controllers\ExamenController::class, 'index']);
 Route::post('/examens/save',[App\Http\Controllers\ExamenController::class, 'store']);
 Route::put('/examens/update/{id}',[App\Http\Controllers\ExamenController::class, 'update']);
@@ -88,4 +104,4 @@ Route::delete('/questions/delete/{id}',[App\Http\Controllers\QuestionController:
 Route::get('/reponses',[App\Http\Controllers\ReponseController::class, 'index']);
 Route::post('/reponses/save',[App\Http\Controllers\ReponseController::class, 'store']);
 Route::put('/reponses/update/{id}',[App\Http\Controllers\ReponseController::class, 'update']);
-Route::delete('/reponses/delete/{id}',[App\Http\Controllers\ReponseController::class, 'destroy']);
+Route::delete('/reponses/delete/{id}',[App\Http\Controllers\ReponseController::class, 'destroy']);*/
