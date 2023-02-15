@@ -19,6 +19,8 @@ return new class extends Migration
             $table->time('duree')->nullable(false);
             $table->unsignedBigInteger('professeur_id')->nullable(false);
             $table->unsignedBigInteger('matiere_id')->nullable(false);
+            $table->foreign('matiere_id')->references('id')->on('matieres')->onDelete('cascade');
+            $table->foreign('professeur_id')->references('id')->on('professeurs')->onDelete('cascade');
             $table->timestamps();
         });
     }
