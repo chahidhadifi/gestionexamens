@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reponses', function (Blueprint $table) {
-            $table->unsignedBigInteger('question_id')->nullable(false);
-            $table->unsignedBigInteger('etudiant_id')->nullable(false);
-            $table->unsignedBigInteger('proposition_id')->nullable(false);
+            $table->foreignId('etudiant_id')->constrained('etudiants');
+            $table->foreignId('question_id')->constrained('questions');
+            $table->foreignId('proposition_id')->constrained('propositions');
             $table->timestamps();
         });
     }
