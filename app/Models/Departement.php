@@ -9,4 +9,10 @@ class Departement extends Model
 {
     use HasFactory;
     protected $fillable = ['nom'];
+    
+    
+    public function filieres()
+    {
+        return $this->hasMany(Filiere::class);
+    }
 }
