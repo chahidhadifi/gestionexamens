@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->unsignedBigInteger('examen_id')->nullable(false);
-            $table->unsignedBigInteger('etudiant_id')->nullable(false);
-            $table->float('valeur', 2, 2);
+            $table->unsignedBigInteger('etudiant_id');
+            $table->unsignedBigInteger('examen_id');
+            $table->decimal('valeur', 5, 2);
+            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade');
+            $table->foreign('examen_id')->references('id')->on('examens')->onDelete('cascade');
             $table->timestamps();
         });
     }
