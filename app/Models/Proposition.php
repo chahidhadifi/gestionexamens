@@ -8,5 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Proposition extends Model
 {
     use HasFactory;
-    protected $fillable = ['libelle', 'vrai', 'question_id'];
+    
+    protected $fillable = [
+        'libelle', 'est_correcte','question_id'
+    ];
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }
