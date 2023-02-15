@@ -8,5 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 class Examen extends Model
 {
     use HasFactory;
-    protected $fillable = ['date', 'duree', 'professeur_id', 'matiere_id'];
+     protected $fillable = ['date', 'duree', 'professeur_id', 'matiere_id'];
+
+    public function professeur()
+    {
+        return $this->belongsTo(Professeur::class);
+    }
+
+    public function matiere()
+    {
+        return $this->belongsTo(Matiere::class);
+    }
+
+    public function etudiants()
+    {
+        return $this->belongsToMany(Etudiant::class)->withPivot('valeur')->withTimestamps();
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }
