@@ -39,6 +39,7 @@ Route::apiResource('propositions',PropositionController::class);
 Route::apiResource('questions',QuestionController::class);
 Route::apiResource('reponses',ReponseController::class);
 Route::apiResource('notes',NoteController::class);
+
 Route::post('/register', [AuthentificationController::class, 'register']);
 
 // Protected routes
@@ -83,4 +84,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/reponses',[ReponseController::class, 'store']);
     Route::put('/reponses/{id}',[ReponseController::class, 'update']);
     Route::delete('/reponses/{id}',[ReponseController::class, 'destroy']);
+    //logout
+    Route::post('/logout', [AuthentificationController::class, 'logout']);
+});
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });
