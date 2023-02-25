@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use App\Http\Controllers\ProfesseurController;
 use App\Http\Controllers\PropositionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ReponseController;
+use App\Http\Controllers\AuthentificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,7 @@ Route::apiResource('propositions',PropositionController::class);
 Route::apiResource('questions',QuestionController::class);
 Route::apiResource('reponses',ReponseController::class);
 Route::apiResource('notes',NoteController::class);
+Route::post('/register', [AuthentificationController::class, 'register']);
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
