@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 class AuthentificationController extends Controller
 {
     public function register(Request $request) {
-        //fields
+        
         $fields = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|unique:users,email',
@@ -35,7 +35,7 @@ class AuthentificationController extends Controller
     }
 
     public function login(Request $request) {
-        //fields
+
         $fields = $request->validate([
             'email' => 'required|string',
             'password' => 'required|string'
