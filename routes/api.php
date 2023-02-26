@@ -41,6 +41,7 @@ Route::apiResource('reponses',ReponseController::class);
 Route::apiResource('notes',NoteController::class);
 
 Route::post('/register', [AuthentificationController::class, 'register']);
+Route::post('/login', [AuthentificationController::class, 'login']);
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {

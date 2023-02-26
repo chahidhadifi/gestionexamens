@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illutminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AuthentificationController extends Controller
 {
@@ -33,14 +34,31 @@ class AuthentificationController extends Controller
         return response($response, 201);
     }
 
-    // public function ldogout(Request $request) {
-    //     auth()->user()->token()->delete();
+    public function login(Request $request) {
+        //fields
+        $fields = $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string'
+        ]);
 
-    //     return [
-    //         'message' => 'Logged out'
-    //     ];
-    // }
+        $user = User::where('email', $fields['email'])->first();
+        
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response([
+                'message' => 'The provided credentials are incorrect.'
+            ], 401);
+        }
 
+        $token = $user->createToken('myapptoken')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
+    
     public function logout(User $user){
         
         $user->tokens()->delete();
